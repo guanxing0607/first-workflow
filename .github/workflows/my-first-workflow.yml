@@ -1,9 +1,19 @@
 name: My First Workflow
 
 on:
+  # 1. 手动触发（在GitHub网页上点按钮就能跑）
+  workflow_dispatch:
+  # 2. 推送到main分支触发（保留原来的）
   push:
     branches:
       - main
+  # 3. 向main分支发起Pull Request时触发
+  pull_request:
+    branches:
+      - main
+  # 4. 定时触发：北京时间 每周一到周五 14:15 自动运行
+  schedule:
+    - cron: "15 6 * * 1-5"
 
 jobs:
   build:
